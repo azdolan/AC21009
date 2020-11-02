@@ -5,6 +5,7 @@ makeRepository () {
 	echo "What is the name of the directory?"
 	read -p "Enter directory name: " dirname
 	mkdir $dirname
+	echo "dirctory created" | tee -a out.log
 	
 }
 
@@ -16,6 +17,7 @@ addingFiles () {
 	echo "What is the name of the file?"
 	read -p "File name: " filename
 	touch $filename.txt
+	echo "file created" | tee -a out.log
 }
 
 checkingFile () {
