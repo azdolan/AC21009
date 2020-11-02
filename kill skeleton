@@ -1,0 +1,26 @@
+killAc () {
+	
+	read -ep "Are you sure you want kill all processes? [Y/N] " choice
+
+	case $choice in
+
+		[Yy]* )
+			echo 'Killing the processes'
+
+
+
+
+
+
+
+			echo "Processes killed" 
+
+			break;;
+
+		* )
+                echo "Not killing the processes"
+                break;;
+
+
+
+}
