@@ -5,6 +5,7 @@ makeRepository () {
 	echo "What is the name of the directory?"
 	read -p "Enter directory name: " dirname
 	mkdir $dirname
+	
 }
 
 #a function to add files to the repositorty
@@ -14,14 +15,23 @@ addingFiles () {
 	cd $dirname
 	echo "What is the name of the file?"
 	read -p "File name: " filename
-	touch $filename
+	touch $filename.txt
+}
+
+checkingFile () {
+	echo "What is the name of the repository you want to go to?"
+	read -p "Enter repository name: " dirname
+	cd $dirname
+	echo "What is the name of the file you want to check?"
+	read -p "Enter file name: " filename
+	cat $filename
 }
 
 
 
-echo "Which action would you like to perform?"
-select action in Make Add Quit
-do
+	echo "Which action would you like to perform?"
+	select action in Make Add Check Quit
+	do
 	case $action in
 		Make)
 			makeRepository
@@ -29,6 +39,10 @@ do
 			;;
 		Add)
 			addingFiles
+			break
+			;;
+			Check)
+			checkingFile
 			break
 			;;
 		Quit)
