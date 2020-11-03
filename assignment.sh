@@ -5,6 +5,7 @@ makeRepository () {
 	echo "What is the name of the directory?"
 	read -p "Enter directory name: " dirname
 	mkdir $dirname
+	cd $dirname
 	echo "dirctory created" | tee -a out.log
 	
 }
@@ -14,6 +15,7 @@ addingFiles () {
 	echo "What is the name of the repository to add the file to?" 
 	read -p "Enter repository name: " dirname
 	cd $dirname
+	ls
 	echo "What is the name of the file?"
 	read -p "File name: " filename
 	touch $filename.txt
@@ -24,35 +26,61 @@ checkingFile () {
 	echo "What is the name of the repository you want to go to?"
 	read -p "Enter repository name: " dirname
 	cd $dirname
+	ls
 	echo "What is the name of the file you want to check?"
 	read -p "Enter file name: " filename
-	cat $filename
+	cat $filename.txt
+	echo "file checked" | tee -a out.log
 }
 
+editingFile () {
+	read -p "Enter repository name: " dirname
+	cd $dirname
+	ls
+	echo "What is the name of the file you want to edit: " 
+	read -p "Enter file name " filename
+	nano $filename.txt
+	echo "file edited" | tee -a out.log
+}
 
+creatingZip (){
+	echo "What is the name of the repository you want to Zip?"
+	read -p "Enter directory name: " dirname
+	zip -r $dirname.zip $dirname
+}
 
-	echo "Which action would you like to perform?"
-	select action in Make Add Check Quit
-	do
-	case $action in
-		Make)
-			makeRepository
-			break
-			;;
-		Add)
-			addingFiles
-			break
-			;;
-			Check)
-			checkingFile
-			break
-			;;
-		Quit)
-			break
-			;;
-			*)
-			echo "Unknown action"
-			;;
-		esac
-	done
+while true
+  do
+  select opt in "Make" "Add" "Check" "Edit" "ZIP" "Quit"
+  do
+      case $opt in
+          Make)
+          	makeRepository
+             break
+              ;;
+              Add)
+				addingFiles
+				break
+				;;
+				Check)
+				checkingFile
+				break
+				;;
+				Edit)
+				editingFile
+				break
+				;;
+				ZIP)
+				creatingZip
+				break
+				;;
+          "Quit")
+              echo "Thank you for using"
+              exit
+              ;;
+          *) echo invalid option;;
+      esac
+  done
+  done
+
 
