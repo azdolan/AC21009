@@ -12,10 +12,6 @@ makeRepository () {
 
 #a function to add files to the repositorty
 addingFiles () {
-	echo "What is the name of the repository to add the file to?" 
-	read -p "Enter repository name: " dirname
-	cd $dirname
-	ls
 	echo "What is the name of the file?"
 	read -p "File name: " filename
 	touch $filename.txt
@@ -23,9 +19,6 @@ addingFiles () {
 }
 
 checkingFile () {
-	echo "What is the name of the repository you want to go to?"
-	read -p "Enter repository name: " dirname
-	cd $dirname
 	ls
 	echo "What is the name of the file you want to check?"
 	read -p "Enter file name: " filename
@@ -34,8 +27,6 @@ checkingFile () {
 }
 
 editingFile () {
-	read -p "Enter repository name: " dirname
-	cd $dirname
 	ls
 	echo "What is the name of the file you want to edit: " 
 	read -p "Enter file name " filename
