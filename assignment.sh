@@ -79,10 +79,9 @@ creatingZip (){
 	else
 	echo "directory selected: $dirname "
 	echo "creating zip of : $dirname "
-		
-	
 	
 	zip -r $dirname.zip $dirname
+	fi
 }
 
 while true
